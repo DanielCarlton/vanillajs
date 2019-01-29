@@ -74,10 +74,10 @@
 
       // Array.prototype.filter()
       // 1. Filter the list of inventors for those who were born in the 1500's
-
       const fifteen = inventors.filter(
-        inventor => inventor.year < 1600 && inventor.year > 1499
+        inventor => inventor.year > 1499 && inventor.year < 1600
       );
+
       // console.table(fifteen);
 
       // Array.prototype.map()
@@ -91,24 +91,24 @@
       // Array.prototype.sort()
       // 3. Sort the inventors by birthdate, oldest to youngest
 
-      const oldToYoung = inventors.sort((personA, personB) =>
-        personA.year > personB.year ? 1 : -1
-      );
+      const oldToYoung = inventors.sort((personA, personB) => {
+        return personA.year > personB.year ? 1 : -1;
+      });
       // console.table(oldToYoung);
 
       // Array.prototype.reduce()
       // 4. How many years did all the inventors live?
 
-      const totalYearsLived = inventors.reduce((total, inventor) => {
-        return total + (inventor.passed - inventor.year);
-      }, 0);
+      const totalYearsLived = inventors.reduce(
+        (total, inventor) => total + (inventor.passed - inventor.year),
+        0
+      );
       // console.log(totalYearsLived);
 
       // 5. Sort the inventors by years lived
-
-      const yearsLived = inventors.sort((personA, personB) => {
-        personA.passed - personA.year > personB.passed - personB.year ? 1 : -1;
-      });
+      const yearsLived = inventors.sort((personA, personB) =>
+        personA.passed - personA.year > personB.passed - personB.year ? 1 : -1
+      );
       // console.table(yearsLived);
 
       // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
@@ -122,7 +122,7 @@
         const [personBFirst, personBLast] = personB.split(', ');
         return personALast > personBLast ? 1 : -1;
       });
-      // console.table(alphabetically);
+      console.table(alphabetically);
 
       // 8. Reduce Exercise
       // Sum up the instances of each of these
@@ -144,14 +144,7 @@
         'truck'
       ];
 
-      const vehicleCount = data.reduce((obj, vehicle) => {
-        if (!obj[vehicle]) {
-          obj[vehicle] = 0;
-        }
-        obj[vehicle]++;
-        return obj;
-      }, {});
-      console.log(vehicleCount);
+      // console.log(vehicleCount);
     </script>
   </body>
 </html>
